@@ -1,0 +1,758 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #F2F3F5;
+    color: #333;
+    min-height: 100vh;
+}
+
+.menu-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #00447A;
+    color: white;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    padding: 0 20px 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+.logo h1 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.4rem;
+}
+
+.logo i {
+    color: #83B81A;
+}
+
+.user-info {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.user-info i {
+    color: #7BDCFF;
+    width: 16px;
+}
+
+.nav-menu {
+    flex: 1;
+    padding: 0 10px;
+    overflow-y: auto;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 20px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.nav-item.active {
+    background-color: #83B81A;
+    color: white;
+}
+
+.nav-item i {
+    width: 20px;
+    text-align: center;
+}
+
+.logout-section {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.header-left h2 {
+    color: #00447A;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.header-right .date-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Content Area */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Sección de Bienvenida */
+.welcome-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.welcome-header {
+    background: linear-gradient(to right, #00447A, #0066CC);
+    color: white;
+    padding: 20px 30px;
+}
+
+.welcome-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.welcome-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.welcome-content {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.welcome-text {
+    flex: 1;
+}
+
+.welcome-text p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.features-list {
+    margin-top: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.feature-item i {
+    font-size: 1.1rem;
+}
+
+.comeduc-badge {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #F2F3F5;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #83B81A;
+    min-width: 250px;
+}
+
+.badge-icon {
+    font-size: 2rem;
+    color: #00447A;
+}
+
+.badge-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-text strong {
+    color: #00447A;
+    font-size: 1.1rem;
+}
+
+.badge-text small {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Sección de Comparación */
+.comparison-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.section-header {
+    background: linear-gradient(to right, #83B81A, #73BA00);
+    color: white;
+    padding: 20px 30px;
+}
+
+.section-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.section-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.comparison-content {
+    padding: 30px;
+}
+
+/* Filtros */
+.filters-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding: 20px;
+    background-color: #F8F9FA;
+    border-radius: 8px;
+    border: 1px solid #E9ECEF;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 180px;
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #00447A;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #DEE2E6;
+    border-radius: 6px;
+    background-color: white;
+    color: #333;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.filter-select:focus {
+    border-color: #00447A;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 68, 122, 0.1);
+}
+
+.apply-filter-btn {
+    padding: 10px 20px;
+    background-color: #00447A;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+    height: 42px;
+}
+
+.apply-filter-btn:hover {
+    background-color: #0066CC;
+}
+
+/* Gráficos */
+.charts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.chart-card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #E9ECEF;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #F8F9FA;
+    border-bottom: 1px solid #E9ECEF;
+}
+
+.chart-header h4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #00447A;
+    font-size: 1.1rem;
+}
+
+.chart-legend {
+    display: flex;
+    gap: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.chart-placeholder {
+    padding: 20px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-simulation {
+    width: 100%;
+    text-align: center;
+}
+
+.simulation-info {
+    margin-bottom: 20px;
+}
+
+.simulation-info i {
+    font-size: 2.5rem;
+    color: #7BDCFF;
+    margin-bottom: 10px;
+}
+
+.simulation-info p {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.simulation-info small {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Simulación de gráfico de barras */
+.simulation-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.institution-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.institution-name {
+    width: 120px;
+    text-align: right;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.bar-container {
+    flex: 1;
+    height: 30px;
+    background-color: #F2F3F5;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+}
+
+.math-bar {
+    height: 50% !important;
+    top: 0 !important;
+}
+
+.language-bar {
+    height: 50% !important;
+    top: 50% !important;
+}
+
+.institution-score {
+    width: 60px;
+    text-align: left;
+    font-weight: 600;
+    color: #00447A;
+    font-size: 0.95rem;
+}
+
+/* Simulación de mapa */
+.map-simulation {
+    width: 100%;
+}
+
+.chile-map {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: #F8F9FA;
+    border-radius: 8px;
+    border: 1px solid #E9ECEF;
+    margin: 20px 0;
+}
+
+.region {
+    position: absolute;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.region:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.region.norte {
+    top: 10%;
+    left: 25%;
+    background-color: #73BA00;
+    color: white;
+}
+
+.region.centro {
+    top: 30%;
+    left: 40%;
+    background-color: #FFA726;
+    color: #333;
+}
+
+.region.rm {
+    top: 45%;
+    left: 45%;
+    background-color: #73BA00;
+    color: white;
+    width: 80px;
+}
+
+.region.sur {
+    top: 60%;
+    left: 30%;
+    background-color: #EF5350;
+    color: white;
+}
+
+.region.austral {
+    top: 80%;
+    left: 20%;
+    background-color: #FFA726;
+    color: #333;
+}
+
+.map-legend {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.chart-footer {
+    padding: 15px 20px;
+    background-color: #F8F9FA;
+    border-top: 1px solid #E9ECEF;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.chart-footer i {
+    margin-right: 5px;
+}
+
+/* Tabla de resumen */
+.summary-table-container {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #E9ECEF;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #F8F9FA;
+    border-bottom: 1px solid #E9ECEF;
+}
+
+.table-header h4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #00447A;
+    font-size: 1.1rem;
+}
+
+.export-btn {
+    padding: 8px 15px;
+    background-color: #83B81A;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.export-btn:hover {
+    background-color: #73BA00;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.summary-table thead {
+    background-color: #F2F3F5;
+}
+
+.summary-table th {
+    padding: 12px 15px;
+    text-align: left;
+    color: #00447A;
+    font-weight: 600;
+    border-bottom: 2px solid #E9ECEF;
+    font-size: 0.9rem;
+}
+
+.summary-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #E9ECEF;
+    font-size: 0.9rem;
+}
+
+.summary-table tbody tr:hover {
+    background-color: #F8F9FA;
+}
+
+.trend-up {
+    color: #73BA00;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.trend-down {
+    color: #EF5350;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.trend-neutral {
+    color: #666;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.table-footer {
+    padding: 15px 20px;
+    background-color: #F8F9FA;
+    border-top: 1px solid #E9ECEF;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.table-footer i {
+    margin-right: 5px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .menu-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+    }
+    
+    .main-content {
+        padding: 20px;
+    }
+    
+    .welcome-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .comeduc-badge {
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-group {
+        min-width: auto;
+    }
+    
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .chart-legend {
+        flex-wrap: wrap;
+    }
+}
