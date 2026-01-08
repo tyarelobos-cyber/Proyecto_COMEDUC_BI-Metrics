@@ -25,10 +25,10 @@
                 <a href="menu-principal.html" class="nav-item active">
                     <i class="fas fa-home"></i> Menú Principal
                 </a>
-                <a href="#" class="nav-item">
+                <a href="dia-matematicas.html" class="nav-item">
                     <i class="fas fa-calculator"></i> DIA Matemáticas
                 </a>
-                <a href="#" class="nav-item">
+                <a href="dia-lenguaje.html" class="nav-item">
                     <i class="fas fa-book"></i> DIA Lenguaje
                 </a>
                 <a href="#" class="nav-item">
@@ -117,11 +117,11 @@
                                 <label for="regionFilter"><i class="fas fa-map-marker-alt"></i> Región</label>
                                 <select id="regionFilter" class="filter-select">
                                     <option value="all">Todas las regiones</option>
+                                    <option value="valparaiso">Región de Valparaíso</option>
                                     <option value="metropolitana">Región Metropolitana</option>
-                                    <option value="valparaiso">Valparaíso</option>
-                                    <option value="biobio">Biobío</option>
-                                    <option value="araucania">Araucanía</option>
-                                    <option value="loslagos">Los Lagos</option>
+                                    <option value="ohiggins">Región de O'Higgins</option>
+                                    <option value="maule">Región del Maule</option>
+                                    <option value="nuble">Región de Ñuble</option>
                                 </select>
                             </div>
                             
@@ -143,7 +143,7 @@
                                 </select>
                             </div>
                             
-                            <button class="apply-filter-btn">
+                            <button class="apply-filter-btn" id="applyFilters">
                                 <i class="fas fa-filter"></i> Aplicar Filtros
                             </button>
                         </div>
@@ -175,7 +175,7 @@
                                         </div>
                                         <div class="simulation-bars">
                                             <div class="institution-bar">
-                                                <div class="institution-name">Institución A</div>
+                                                <div class="institution-name">Inst. Superior de Comercio Bicentenario</div>
                                                 <div class="bar-container">
                                                     <div class="bar math-bar" style="width: 78%; background-color: #00447A;"></div>
                                                     <div class="bar language-bar" style="width: 85%; background-color: #83B81A;"></div>
@@ -183,7 +183,7 @@
                                                 <div class="institution-score">81.5%</div>
                                             </div>
                                             <div class="institution-bar">
-                                                <div class="institution-name">Institución B</div>
+                                                <div class="institution-name">Liceo Comercial Luis Correa Prieto</div>
                                                 <div class="bar-container">
                                                     <div class="bar math-bar" style="width: 65%; background-color: #00447A;"></div>
                                                     <div class="bar language-bar" style="width: 72%; background-color: #83B81A;"></div>
@@ -191,7 +191,7 @@
                                                 <div class="institution-score">68.5%</div>
                                             </div>
                                             <div class="institution-bar">
-                                                <div class="institution-name">Institución C</div>
+                                                <div class="institution-name">Inst. Politécnico Bicentenario</div>
                                                 <div class="bar-container">
                                                     <div class="bar math-bar" style="width: 82%; background-color: #00447A;"></div>
                                                     <div class="bar language-bar" style="width: 79%; background-color: #83B81A;"></div>
@@ -199,7 +199,7 @@
                                                 <div class="institution-score">80.5%</div>
                                             </div>
                                             <div class="institution-bar">
-                                                <div class="institution-name">Institución D</div>
+                                                <div class="institution-name">Liceo Bicentenario Téc. de Rancagua</div>
                                                 <div class="bar-container">
                                                     <div class="bar math-bar" style="width: 90%; background-color: #00447A;"></div>
                                                     <div class="bar language-bar" style="width: 88%; background-color: #83B81A;"></div>
@@ -265,7 +265,7 @@
                         <div class="summary-table-container">
                             <div class="table-header">
                                 <h4><i class="fas fa-table"></i> Resumen de Rendimiento por Institución</h4>
-                                <button class="export-btn">
+                                <button class="export-btn" id="exportData">
                                     <i class="fas fa-download"></i> Exportar Datos
                                 </button>
                             </div>
@@ -281,52 +281,13 @@
                                             <th>Tendencia</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Institución A</td>
-                                            <td>Metropolitana</td>
-                                            <td>78%</td>
-                                            <td>85%</td>
-                                            <td>81.5%</td>
-                                            <td><span class="trend-up"><i class="fas fa-arrow-up"></i> 2.3%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Institución B</td>
-                                            <td>Valparaíso</td>
-                                            <td>65%</td>
-                                            <td>72%</td>
-                                            <td>68.5%</td>
-                                            <td><span class="trend-down"><i class="fas fa-arrow-down"></i> 1.5%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Institución C</td>
-                                            <td>Biobío</td>
-                                            <td>82%</td>
-                                            <td>79%</td>
-                                            <td>80.5%</td>
-                                            <td><span class="trend-up"><i class="fas fa-arrow-up"></i> 3.1%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Institución D</td>
-                                            <td>Araucanía</td>
-                                            <td>90%</td>
-                                            <td>88%</td>
-                                            <td>89.0%</td>
-                                            <td><span class="trend-up"><i class="fas fa-arrow-up"></i> 4.7%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Institución E</td>
-                                            <td>Los Lagos</td>
-                                            <td>71%</td>
-                                            <td>76%</td>
-                                            <td>73.5%</td>
-                                            <td><span class="trend-neutral"><i class="fas fa-minus"></i> 0.0%</span></td>
-                                        </tr>
+                                    <tbody id="resultsTableBody">
+                                        <!-- Datos cargados por JavaScript -->
                                     </tbody>
                                 </table>
                             </div>
                             <div class="table-footer">
-                                <p><i class="fas fa-info-circle"></i> Mostrando 5 de 32 instituciones. Use los filtros para refinar los resultados.</p>
+                                <p><i class="fas fa-info-circle"></i> Mostrando instituciones de COMEDUC. Use los filtros para refinar los resultados.</p>
                             </div>
                         </div>
                     </div>
