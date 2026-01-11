@@ -1,0 +1,383 @@
+/* dia-dia-styles.css - Estilos específicos para vistas DIA */
+
+/* Contenedor principal DIA */
+.dia-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+    .dia-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Secciones DIA */
+.dia-section {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dia-header {
+    background: linear-gradient(to right, #00447A, #0066CC);
+    color: white;
+    padding: 18px 25px;
+}
+
+.dia-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.dia-content {
+    padding: 25px;
+}
+
+/* Gráficos DIA */
+.chart-wrapper {
+    height: 300px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Botones de región */
+.region-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .region-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+.region-btn {
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    color: white;
+}
+
+.region-btn.norte {
+    background-color: #AEBBC1;
+}
+
+.region-btn.centro {
+    background-color: #83B81A;
+}
+
+.region-btn.sur {
+    background-color: #00447A;
+}
+
+.region-btn.metropolitana {
+    background-color: #7BDCFF;
+    color: #333;
+}
+
+.region-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.region-btn.active {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 3px rgba(0, 68, 122, 0.2);
+}
+
+/* Estadísticas DIA */
+.institution-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+    .institution-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stat-card {
+    background-color: #F8F9FA;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-left: 4px solid #00447A;
+    transition: all 0.3s;
+}
+
+.stat-card:hover {
+    background-color: #F2F3F5;
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: #00447A;
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00447A;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Lista de instituciones */
+.institution-list {
+    background-color: #F8F9FA;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #E9ECEF;
+}
+
+.institution-list h4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #00447A;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.institution-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.institution-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #E9ECEF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.institution-list li:last-child {
+    border-bottom: none;
+}
+
+.institution-list li i {
+    color: #83B81A;
+    font-size: 1rem;
+}
+
+/* Navegación rápida */
+.quick-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .quick-nav {
+        grid-template-columns: 1fr;
+    }
+}
+
+.quick-nav-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+    border-top: 4px solid #00447A;
+}
+
+.quick-nav-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #F8F9FA;
+}
+
+.quick-nav-card:nth-child(2) {
+    border-top-color: #83B81A;
+}
+
+.quick-nav-card:nth-child(3) {
+    border-top-color: #7BDCFF;
+}
+
+.quick-nav-card i {
+    font-size: 2.5rem;
+    color: #00447A;
+    margin-bottom: 15px;
+}
+
+.quick-nav-card:nth-child(2) i {
+    color: #83B81A;
+}
+
+.quick-nav-card:nth-child(3) i {
+    color: #7BDCFF;
+}
+
+.quick-nav-card span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #00447A;
+}
+
+.quick-nav-card small {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Estilos para gráficos DIA específicos */
+.dia-chart-container {
+    background-color: #F8F9FA;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.dia-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E9ECEF;
+}
+
+.dia-chart-header h4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #00447A;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.dia-chart-legend {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.dia-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.dia-legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+/* Tablas DIA mejoradas */
+.dia-table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #E9ECEF;
+    background-color: white;
+}
+
+.dia-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.dia-table thead {
+    background-color: #F2F3F5;
+    position: sticky;
+    top: 0;
+}
+
+.dia-table th {
+    padding: 14px 16px;
+    text-align: left;
+    color: #00447A;
+    font-weight: 600;
+    border-bottom: 2px solid #E9ECEF;
+    white-space: nowrap;
+}
+
+.dia-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #E9ECEF;
+    color: #333;
+}
+
+.dia-table tbody tr:hover {
+    background-color: #F8F9FA;
+}
+
+.dia-table .col-highlight {
+    background-color: rgba(0, 68, 122, 0.1);
+    font-weight: 600;
+    color: #00447A;
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+    .dia-content {
+        padding: 15px;
+    }
+    
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .stat-icon {
+        margin-bottom: 10px;
+    }
+    
+    .region-buttons {
+        gap: 10px;
+    }
+    
+    .region-btn {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+}

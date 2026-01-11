@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista General DIA - COMEDUC Dashboard</title>
+    <link rel="stylesheet" href="dia-lenguaje.css">
+    <link rel="stylesheet" href="dia-dia-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar COMEDUC -->
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <h1>COMEDUC</h1>
+            </div>
+            
+            <div class="user-info">
+                <p><i class="fas fa-user-circle"></i> <span id="userName">Usuario COMEDUC</span></p>
+                <p><i class="fas fa-envelope"></i> <span id="userEmail">usuario@comeduc.cl</span></p>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="menu-principal.html" class="nav-item">
+                    <i class="fas fa-home"></i> Menú Principal
+                </a>
+                <a href="dia-overview.html" class="nav-item active">
+                    <i class="fas fa-chart-pie"></i> Vista General DIA
+                </a>
+                <a href="dia-matematicas.html" class="nav-item">
+                    <i class="fas fa-calculator"></i> DIA Matemáticas
+                </a>
+                <a href="dia-lenguaje.html" class="nav-item">
+                    <i class="fas fa-book"></i> DIA Lenguaje
+                </a>
+                <a href="dia-desglose.html" class="nav-item">
+                    <i class="fas fa-search"></i> Desglose Detallado
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-file-upload"></i> Cargar Excel
+                </a>
+            </div>
+            
+            <div class="logout-section">
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="header-left">
+                    <h2><i class="fas fa-chart-pie"></i> Vista General DIA</h2>
+                    <p class="subtitle">Distribución Nacional de Evaluaciones DIA - COMEDUC</p>
+                </div>
+                <div class="header-right">
+                    <div class="date-info">
+                        <i class="far fa-calendar"></i>
+                        <span id="currentDate">Cargando fecha...</span>
+                    </div>
+                    <div class="kpi-badge">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Distribución Nacional</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <!-- Panel de Distribución -->
+                <div class="filters-panel" id="filters-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-map"></i> Distribución Geográfica DIA</h3>
+                        <p class="panel-subtitle">Seleccione zona para ver detalles de evaluaciones</p>
+                    </div>
+                    
+                    <div class="filters-grid">
+                        <div class="filter-row">
+                            <div class="filter-group">
+                                <label for="zonaFilter"><i class="fas fa-globe-americas"></i> Zona</label>
+                                <select id="zonaFilter" class="filter-select">
+                                    <option value="all">Todas las zonas</option>
+                                    <option value="norte">Zona Norte</option>
+                                    <option value="centro">Zona Centro</option>
+                                    <option value="sur">Zona Sur</option>
+                                    <option value="metropolitana" selected>Región Metropolitana</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="anoFilter"><i class="fas fa-calendar"></i> Año</label>
+                                <select id="anoFilter" class="filter-select">
+                                    <option value="2025">2025</option>
+                                    <option value="2024" selected>2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="tipoFilter"><i class="fas fa-graduation-cap"></i> Nivel</label>
+                                <select id="tipoFilter" class="filter-select">
+                                    <option value="all">Ambos niveles</option>
+                                    <option value="1medio">1° Medio</option>
+                                    <option value="2medio">2° Medio</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-actions">
+                        <button class="apply-filter-btn" id="applyFilters">
+                            <i class="fas fa-filter"></i> Aplicar Filtros
+                        </button>
+                        <button class="reset-filter-btn" id="resetFilters">
+                            <i class="fas fa-redo"></i> Restablecer
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contenido Principal DIA -->
+                <div class="dia-container">
+                    <div class="dia-section">
+                        <div class="dia-header">
+                            <h3><i class="fas fa-chart-pie"></i> Distribución por Región</h3>
+                        </div>
+                        <div class="dia-content">
+                            <div class="chart-wrapper">
+                                <canvas id="regionChart"></canvas>
+                            </div>
+                            <div class="region-buttons">
+                                <button class="region-btn norte" data-region="norte">
+                                    <i class="fas fa-mountain"></i> Zona Norte
+                                </button>
+                                <button class="region-btn centro" data-region="centro">
+                                    <i class="fas fa-city"></i> Zona Centro
+                                </button>
+                                <button class="region-btn sur" data-region="sur">
+                                    <i class="fas fa-tree"></i> Zona Sur
+                                </button>
+                                <button class="region-btn metropolitana active" data-region="metropolitana">
+                                    <i class="fas fa-building"></i> Región Metropolitana
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dia-section">
+                        <div class="dia-header">
+                            <h3><i class="fas fa-university"></i> Instituciones por Zona</h3>
+                        </div>
+                        <div class="dia-content">
+                            <div class="institution-stats">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-school"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <div class="stat-value">19</div>
+                                        <div class="stat-label">Instituciones Totales</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <div class="stat-value">1,245</div>
+                                        <div class="stat-label">Estudiantes Evaluados</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <div class="stat-value">72.3%</div>
+                                        <div class="stat-label">Rendimiento Promedio</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="institution-list">
+                                <h4><i class="fas fa-list"></i> Principales Instituciones</h4>
+                                <ul>
+                                    <li><i class="fas fa-map-pin"></i> Inst. Superior de Comercio Bicentenario</li>
+                                    <li><i class="fas fa-map-pin"></i> Liceo Comercial Luis Correa Prieto</li>
+                                    <li><i class="fas fa-map-pin"></i> Liceo Bicentenario Téc. de Rancagua</li>
+                                    <li><i class="fas fa-map-pin"></i> Inst. Politécnico Bicentenario</li>
+                                    <li><i class="fas fa-map-pin"></i> Inst. Superior de Comercio de Chillán</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navegación Rápida -->
+                <div class="quick-nav">
+                    <a href="dia-matematicas.html" class="quick-nav-card">
+                        <i class="fas fa-calculator"></i>
+                        <span>Matemáticas</span>
+                        <small>Ver evaluación detallada</small>
+                    </a>
+                    <a href="dia-lenguaje.html" class="quick-nav-card">
+                        <i class="fas fa-book"></i>
+                        <span>Lenguaje</span>
+                        <small>Ver evaluación detallada</small>
+                    </a>
+                    <a href="dia-desglose.html" class="quick-nav-card">
+                        <i class="fas fa-search"></i>
+                        <span>Desglose</span>
+                        <small>Análisis profundo</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="dia-overview.js"></script>
+    <script src="common.js"></script>
+</body>
+</html>
