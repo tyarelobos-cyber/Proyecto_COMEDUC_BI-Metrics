@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIA Lenguaje - COMEDUC Dashboard</title>
+    <link rel="stylesheet" href="dia-lenguaje.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <h1>COMEDUC</h1>
+            </div>
+            
+            <div class="user-info">
+                <p><i class="fas fa-user-circle"></i> Usuario COMEDUC</p>
+                <p><i class="fas fa-envelope"></i> <span id="userEmail">usuario@comeduc.cl</span></p>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="menu-principal.html" class="nav-item">
+                    <i class="fas fa-home"></i> Menú Principal
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-calculator"></i> DIA Matemáticas
+                </a>
+                <a href="dia-lenguaje.html" class="nav-item active">
+                    <i class="fas fa-book"></i> DIA Lenguaje
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-file-upload"></i> Cargar Excel
+                </a>
+            </div>
+            
+            <div class="logout-section">
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="header-left">
+                    <h2><i class="fas fa-book"></i> DIA Lenguaje</h2>
+                    <p class="subtitle">Evaluación de Desempeño en Lenguaje y Comunicación - 1° y 2° Medio</p>
+                </div>
+                <div class="header-right">
+                    <div class="date-info">
+                        <i class="far fa-calendar"></i>
+                        <span id="currentDate">Cargando fecha...</span>
+                    </div>
+                    <div class="kpi-badge">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Evaluación DIA</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <!-- Panel de Filtros -->
+                <div class="filters-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-filter"></i> Filtros de Análisis</h3>
+                        <p class="panel-subtitle">Seleccione los criterios para visualizar los datos de Lenguaje</p>
+                    </div>
+                    
+                    <div class="filters-grid">
+                        <!-- Fila 1 de filtros -->
+                        <div class="filter-row">
+                            <div class="filter-group">
+                                <label for="regionFilter"><i class="fas fa-map-marker-alt"></i> Región</label>
+                                <select id="regionFilter" class="filter-select">
+                                    <option value="all">Todas las regiones</option>
+                                    <option value="metropolitana">Región Metropolitana</option>
+                                    <option value="valparaiso">Valparaíso</option>
+                                    <option value="maule">Maule</option>
+                                    <option value="biobio">Biobío</option>
+                                    <option value="araucania">Araucanía</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="institutionFilter"><i class="fas fa-university"></i> Institución</label>
+                                <select id="institutionFilter" class="filter-select">
+                                    <option value="all">Todas las instituciones</option>
+                                    <option value="institution1">Institución A</option>
+                                    <option value="institution2">Institución B</option>
+                                    <option value="institution3">Institución C</option>
+                                    <option value="institution4">Institución D</option>
+                                    <option value="institution5">Institución E</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="yearFilter"><i class="fas fa-calendar"></i> Año</label>
+                                <select id="yearFilter" class="filter-select">
+                                    <option value="2025">2025</option>
+                                    <option value="2024" selected>2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Fila 2 de filtros -->
+                        <div class="filter-row">
+                            <div class="filter-group">
+                                <label for="gradeFilter"><i class="fas fa-graduation-cap"></i> Nivel</label>
+                                <select id="gradeFilter" class="filter-select">
+                                    <option value="all">Ambos niveles</option>
+                                    <option value="1medio">1° Medio</option>
+                                    <option value="2medio">2° Medio</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="courseFilter"><i class="fas fa-users"></i> Curso</label>
+                                <select id="courseFilter" class="filter-select">
+                                    <option value="all">Todos los cursos</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="G">G</option>
+                                    <option value="H">H</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="semesterFilter"><i class="fas fa-calendar-alt"></i> Semestre</label>
+                                <select id="semesterFilter" class="filter-select">
+                                    <option value="all">Ambos semestres</option>
+                                    <option value="1">Primer semestre</option>
+                                    <option value="2">Segundo semestre</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Fila 3 de filtros -->
+                        <div class="filter-row">
+                            <div class="filter-group">
+                                <label for="evaluationFilter"><i class="fas fa-clipboard-check"></i> Tipo Evaluación</label>
+                                <select id="evaluationFilter" class="filter-select">
+                                    <option value="all">Todas las evaluaciones</option>
+                                    <option value="diagnostica">Evaluación Diagnóstica</option>
+                                    <option value="formativa">Evaluación Formativa</option>
+                                    <option value="sumativa">Evaluación Sumativa</option>
+                                    <option value="final">Evaluación Final</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="competenceFilter"><i class="fas fa-brain"></i> Competencia</label>
+                                <select id="competenceFilter" class="filter-select">
+                                    <option value="all">Todas las competencias</option>
+                                    <option value="lectura">Comprensión Lectora</option>
+                                    <option value="escritura">Producción Escrita</option>
+                                    <option value="oralidad">Comunicación Oral</option>
+                                    <option value="vocabulario">Vocabulario</option>
+                                    <option value="gramatica">Gramática y Ortografía</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="viewTypeFilter"><i class="fas fa-eye"></i> Tipo de Vista</label>
+                                <select id="viewTypeFilter" class="filter-select">
+                                    <option value="aggregated">Vista Agregada</option>
+                                    <option value="detailed">Vista Detallada</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-actions">
+                        <button class="apply-filter-btn" id="applyFilters">
+                            <i class="fas fa-filter"></i> Aplicar Filtros
+                        </button>
+                        <button class="reset-filter-btn" id="resetFilters">
+                            <i class="fas fa-redo"></i> Restablecer
+                        </button>
+                        <button class="export-filter-btn" id="exportData">
+                            <i class="fas fa-file-export"></i> Exportar Datos
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- KPIs Principales -->
+                <div class="kpi-container">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <i class="fas fa-chart-bar"></i>
+                            <h4>Rendimiento General</h4>
+                        </div>
+                        <div class="kpi-value" id="generalPerformance">78.5%</div>
+                        <div class="kpi-trend trend-up">
+                            <i class="fas fa-arrow-up"></i> 2.3%
+                        </div>
+                        <div class="kpi-footer">
+                            Promedio Lenguaje
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <i class="fas fa-users"></i>
+                            <h4>Estudiantes Evaluados</h4>
+                        </div>
+                        <div class="kpi-value" id="studentsEvaluated">1,245</div>
+                        <div class="kpi-trend trend-neutral">
+                            <i class="fas fa-minus"></i> 0.0%
+                        </div>
+                        <div class="kpi-footer">
+                            1° y 2° Medio
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>Nivel Satisfactorio</h4>
+                        </div>
+                        <div class="kpi-value" id="satisfactoryLevel">68%</div>
+                        <div class="kpi-trend trend-up">
+                            <i class="fas fa-arrow-up"></i> 4.1%
+                        </div>
+                        <div class="kpi-footer">
+                            Por encima del 60%
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <i class="fas fa-times-circle"></i>
+                            <h4>Nivel Insatisfactorio</h4>
+                        </div>
+                        <div class="kpi-value" id="unsatisfactoryLevel">32%</div>
+                        <div class="kpi-trend trend-down">
+                            <i class="fas fa-arrow-down"></i> 4.1%
+                        </div>
+                        <div class="kpi-footer">
+                            Requiere atención
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gráficos de Comparación -->
+                <div class="charts-section">
+                    <!-- Comparación entre Cursos -->
+                    <div class="chart-card full-width">
+                        <div class="chart-header">
+                            <h4><i class="fas fa-exchange-alt"></i> Comparación entre Cursos - Lenguaje</h4>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #00447A;"></span>
+                                    <span>1° Medio</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #83B81A;"></span>
+                                    <span>2° Medio</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-content">
+                            <canvas id="coursesComparisonChart"></canvas>
+                        </div>
+                        <div class="chart-footer">
+                            <p><i class="fas fa-info-circle"></i> Comparación del rendimiento en Lenguaje por curso (A-H) y nivel</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Comparación entre Instituciones -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h4><i class="fas fa-university"></i> Comparación entre Instituciones</h4>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #00447A;"></span>
+                                    <span>Lenguaje</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-content">
+                            <canvas id="institutionsComparisonChart"></canvas>
+                        </div>
+                        <div class="chart-footer">
+                            <p><i class="fas fa-info-circle"></i> Rendimiento promedio por institución</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Distribución por Competencias -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h4><i class="fas fa-brain"></i> Competencias de Lenguaje</h4>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #00447A;"></span>
+                                    <span>1° Medio</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #83B81A;"></span>
+                                    <span>2° Medio</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-content">
+                            <canvas id="competencesChart"></canvas>
+                        </div>
+                        <div class="chart-footer">
+                            <p><i class="fas fa-info-circle"></i> Desempeño por competencia específica</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tabla de Detalles -->
+                <div class="details-section">
+                    <div class="section-header">
+                        <h4><i class="fas fa-table"></i> Detalle de Resultados por Curso</h4>
+                        <div class="table-actions">
+                            <button class="action-btn" id="toggleView">
+                                <i class="fas fa-exchange-alt"></i> Cambiar Vista
+                            </button>
+                            <button class="action-btn" id="downloadTable">
+                                <i class="fas fa-download"></i> Descargar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Institución</th>
+                                    <th>Curso</th>
+                                    <th>Nivel</th>
+                                    <th>Estudiantes</th>
+                                    <th>Promedio Lenguaje</th>
+                                    <th>Satisfactorio</th>
+                                    <th>Insatisfactorio</th>
+                                    <th>Tendencia</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsTableBody">
+                                <!-- Datos cargados dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-footer">
+                        <p><i class="fas fa-info-circle"></i> Mostrando resultados filtrados. Haga clic en "Ver Detalle" para análisis específico.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="dia-lenguaje.js"></script>
+</body>
+</html>

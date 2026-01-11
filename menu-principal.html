@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - COMEDUC Dashboard</title>
+    <link rel="stylesheet" href="menu-principal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="menu-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <h1>COMEDUC</h1>
+            </div>
+            
+            <div class="user-info">
+                <p><i class="fas fa-user-circle"></i> Usuario COMEDUC</p>
+                <p><i class="fas fa-envelope"></i> <span id="userEmail">usuario@comeduc.cl</span></p>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="menu-principal.html" class="nav-item active">
+                    <i class="fas fa-home"></i> Menú Principal
+                </a>
+                <a href="dia-matematicas.html#filters-panel" class="nav-item">
+                    <i class="fas fa-calculator"></i> DIA Matemáticas
+                </a>
+                <a href="dia-lenguaje.html" class="nav-item">
+                    <i class="fas fa-book"></i> DIA Lenguaje
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-file-upload"></i> Cargar Excel
+                </a>
+            </div>
+            
+            <div class="logout-section">
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="header-left">
+                    <h2>Menú Principal</h2>
+                    <p class="subtitle">Dashboard de Rendimiento Académico COMEDUC</p>
+                </div>
+                <div class="header-right">
+                    <div class="date-info">
+                        <i class="far fa-calendar"></i>
+                        <span id="currentDate">Cargando fecha...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <!-- Sección de Bienvenida -->
+                <div class="welcome-section">
+                    <div class="welcome-header">
+                        <h3><i class="fas fa-graduation-cap"></i> Bienvenido al Sistema COMEDUC</h3>
+                        <p class="welcome-subtitle">Sistema de Análisis y Visualización de Rendimiento Académico</p>
+                    </div>
+                    
+                    <div class="welcome-content">
+                        <div class="welcome-text">
+                            <p>Este dashboard permite monitorear y analizar el rendimiento académico de todas las instituciones de la fundación COMEDUC a nivel nacional.</p>
+                            <p>Utilice las opciones del menú para acceder a las diferentes funcionalidades del sistema:</p>
+                            
+                            <div class="features-list">
+                                <div class="feature-item">
+                                    <i class="fas fa-chart-bar" style="color: #00447A;"></i>
+                                    <span>Visualización de rendimiento académico segmentado</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-chart-pie" style="color: #83B81A;"></i>
+                                    <span>KPIs de desempeño con representaciones visuales</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-exchange-alt" style="color: #7BDCFF;"></i>
+                                    <span>Comparación entre instituciones y cursos</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-filter" style="color: #73BA00;"></i>
+                                    <span>Filtrado dinámico por año, semestre y evaluación</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comeduc-badge">
+                            <div class="badge-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="badge-text">
+                                <strong>Sistema Autorizado COMEDUC</strong>
+                                <small>Acceso restringido a personal autorizado</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sección de Comparación entre Instituciones -->
+                <div class="comparison-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-university"></i> Comparación de Rendimiento entre Instituciones</h3>
+                        <p class="section-subtitle">Visualización general del rendimiento académico por institución</p>
+                    </div>
+                    
+                    <div class="comparison-content">
+                        <!-- Filtros -->
+                        <div class="filters-container">
+                            <div class="filter-group">
+                                <label for="regionFilter"><i class="fas fa-map-marker-alt"></i> Región</label>
+                                <select id="regionFilter" class="filter-select">
+                                    <option value="all">Todas las regiones</option>
+                                    <option value="valparaiso">Región de Valparaíso</option>
+                                    <option value="metropolitana">Región Metropolitana</option>
+                                    <option value="ohiggins">Región de O'Higgins</option>
+                                    <option value="maule">Región del Maule</option>
+                                    <option value="nuble">Región de Ñuble</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="yearFilter"><i class="fas fa-calendar"></i> Año</label>
+                                <select id="yearFilter" class="filter-select">
+                                    <option value="2025">2025</option>
+                                    <option value="2024" selected>2024</option>
+                                    <option value="2023">2023</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="semesterFilter"><i class="fas fa-calendar-alt"></i> Semestre</label>
+                                <select id="semesterFilter" class="filter-select">
+                                    <option value="all">Ambos semestres</option>
+                                    <option value="1">Primer semestre</option>
+                                    <option value="2">Segundo semestre</option>
+                                </select>
+                            </div>
+                            
+                            <button class="apply-filter-btn" id="applyFilters">
+                                <i class="fas fa-filter"></i> Aplicar Filtros
+                            </button>
+                        </div>
+                        
+                        <!-- Gráficos de comparación -->
+                        <div class="charts-container">
+                            <!-- Gráfico de barras comparativo -->
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h4><i class="fas fa-chart-bar"></i> Rendimiento por Institución</h4>
+                                    <div class="chart-legend">
+                                        <div class="legend-item">
+                                            <span class="legend-color" style="background-color: #00447A;"></span>
+                                            <span>Matemáticas</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="legend-color" style="background-color: #83B81A;"></span>
+                                            <span>Lenguaje</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chart-placeholder" id="barChart">
+                                    <!-- Aquí irá el gráfico de barras -->
+                                    <div class="chart-simulation">
+                                        <div class="simulation-info">
+                                            <i class="fas fa-chart-bar"></i>
+                                            <p>Gráfico de barras comparativo entre instituciones</p>
+                                            <small>Mostrará el rendimiento en Matemáticas y Lenguaje por institución</small>
+                                        </div>
+                                        <div class="simulation-bars">
+                                            <div class="institution-bar">
+                                                <div class="institution-name">Inst. Superior de Comercio Bicentenario</div>
+                                                <div class="bar-container">
+                                                    <div class="bar math-bar" style="width: 78%; background-color: #00447A;"></div>
+                                                    <div class="bar language-bar" style="width: 85%; background-color: #83B81A;"></div>
+                                                </div>
+                                                <div class="institution-score">81.5%</div>
+                                            </div>
+                                            <div class="institution-bar">
+                                                <div class="institution-name">Liceo Comercial Luis Correa Prieto</div>
+                                                <div class="bar-container">
+                                                    <div class="bar math-bar" style="width: 65%; background-color: #00447A;"></div>
+                                                    <div class="bar language-bar" style="width: 72%; background-color: #83B81A;"></div>
+                                                </div>
+                                                <div class="institution-score">68.5%</div>
+                                            </div>
+                                            <div class="institution-bar">
+                                                <div class="institution-name">Inst. Politécnico Bicentenario</div>
+                                                <div class="bar-container">
+                                                    <div class="bar math-bar" style="width: 82%; background-color: #00447A;"></div>
+                                                    <div class="bar language-bar" style="width: 79%; background-color: #83B81A;"></div>
+                                                </div>
+                                                <div class="institution-score">80.5%</div>
+                                            </div>
+                                            <div class="institution-bar">
+                                                <div class="institution-name">Liceo Bicentenario Téc. de Rancagua</div>
+                                                <div class="bar-container">
+                                                    <div class="bar math-bar" style="width: 90%; background-color: #00447A;"></div>
+                                                    <div class="bar language-bar" style="width: 88%; background-color: #83B81A;"></div>
+                                                </div>
+                                                <div class="institution-score">89.0%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chart-footer">
+                                    <p><i class="fas fa-info-circle"></i> Comparación del rendimiento promedio en Matemáticas y Lenguaje</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Gráfico de mapa por región -->
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h4><i class="fas fa-map"></i> Distribución Geográfica</h4>
+                                    <div class="chart-legend">
+                                        <div class="legend-item">
+                                            <span class="legend-color" style="background-color: #73BA00;"></span>
+                                            <span>Alto rendimiento</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="legend-color" style="background-color: #FFA726;"></span>
+                                            <span>Rendimiento medio</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <span class="legend-color" style="background-color: #EF5350;"></span>
+                                            <span>Bajo rendimiento</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chart-placeholder" id="mapChart">
+                                    <!-- Aquí irá el mapa de Chile -->
+                                    <div class="chart-simulation">
+                                        <div class="simulation-info">
+                                            <i class="fas fa-map-marked-alt"></i>
+                                            <p>Mapa de distribución del rendimiento por región</p>
+                                            <small>Mostrará el rendimiento general de instituciones por región de Chile</small>
+                                        </div>
+                                        <div class="map-simulation">
+                                            <div class="chile-map">
+                                                <div class="region norte" data-region="norte">Norte</div>
+                                                <div class="region centro" data-region="centro">Centro</div>
+                                                <div class="region rm" data-region="rm">RM</div>
+                                                <div class="region sur" data-region="sur">Sur</div>
+                                                <div class="region austral" data-region="austral">Austral</div>
+                                            </div>
+                                            <div class="map-legend">
+                                                <p><i class="fas fa-info-circle"></i> Haga clic en una región para ver detalles</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chart-footer">
+                                    <p><i class="fas fa-info-circle"></i> Visualización del rendimiento académico por región geográfica</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tabla de resumen -->
+                        <div class="summary-table-container">
+                            <div class="table-header">
+                                <h4><i class="fas fa-table"></i> Resumen de Rendimiento por Institución</h4>
+                                <button class="export-btn" id="exportData">
+                                    <i class="fas fa-download"></i> Exportar Datos
+                                </button>
+                            </div>
+                            <div class="table-wrapper">
+                                <table class="summary-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Institución</th>
+                                            <th>Región</th>
+                                            <th>Matemáticas</th>
+                                            <th>Lenguaje</th>
+                                            <th>Rendimiento Total</th>
+                                            <th>Tendencia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="resultsTableBody">
+                                        <!-- Datos cargados por JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-footer">
+                                <p><i class="fas fa-info-circle"></i> Mostrando instituciones de COMEDUC. Use los filtros para refinar los resultados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="menu-principal.js"></script>
+</body>
+</html>
