@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Manejar clic en elementos del menú (excepto el menú principal, DIA Matemáticas y Desglose Detallado)
+    // Manejar clic en elementos del menú (excepto el menú principal y DIA Matemáticas)
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
         item.addEventListener('click', function(e) {
-            // Si no es el menú principal, DIA Matemáticas ni Desglose Detallado, prevenir acción por ahora
-            if (!this.getAttribute('href').includes('menu-principal') && !this.getAttribute('href').includes('dia-matematicas') && !this.getAttribute('href').includes('dia-desglose')) {
+            // Si no es el menú principal ni DIA Matemáticas, prevenir acción por ahora
+            if (!this.getAttribute('href').includes('menu-principal') && !this.getAttribute('href').includes('dia-matematicas')) {
                 e.preventDefault();
                 
                 // Verificar si es el botón de Cargar Excel

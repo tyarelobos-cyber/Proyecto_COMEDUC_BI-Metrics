@@ -80,20 +80,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Datos de ejemplo para gráficos
-    const courses = ['A', 'B', 'C', 'D', 'E'];
+    const courses = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const areasMatematicas = ['Álgebra', 'Geometría', 'Números y Operaciones', 'Datos y Probabilidades', 'Funciones'];
     
     // Datos de ejemplo para 1° Medio
     const firstGradeData = {
         courses: courses,
-        performance: [72, 76, 68, 79, 71],
+        performance: [72, 76, 68, 79, 71, 74, 69, 78],
         areas: [75, 70, 72, 68, 74]
     };
     
     // Datos de ejemplo para 2° Medio
     const secondGradeData = {
         courses: courses,
-        performance: [75, 79, 72, 82, 76],
+        performance: [75, 79, 72, 82, 76, 78, 73, 81],
         areas: [78, 73, 75, 71, 77]
     };
     
@@ -281,11 +281,9 @@ document.addEventListener('DOMContentLoaded', function() {
             { institution: 'Liceo Bicentenario Téc. de Rancagua', course: 'C', level: '2° Medio', students: 38, avg: 79, satisfactory: 71, unsatisfactory: 29, trend: 'up' },
             { institution: 'Inst. Politécnico Bicentenario Juan Terrier Dailly', course: 'D', level: '2° Medio', students: 36, avg: 82, satisfactory: 75, unsatisfactory: 25, trend: 'up' },
             { institution: 'Inst. Superior de Comercio de Chillán', course: 'E', level: '1° Medio', students: 34, avg: 71, satisfactory: 63, unsatisfactory: 37, trend: 'down' },
-            { institution: 'Liceo Comercial Gabriel González V', course: 'A', level: '2° Medio', students: 37, avg: 78, satisfactory: 70, unsatisfactory: 30, trend: 'up' },
-            { institution: 'Inst. Sup. de Comercio Alberto Blest G', course: 'B', level: '1° Medio', students: 33, avg: 69, satisfactory: 58, unsatisfactory: 42, trend: 'neutral' },
-            { institution: 'Liceo Téc. Bicentenario Felisa Tolup', course: 'C', level: '2° Medio', students: 35, avg: 81, satisfactory: 73, unsatisfactory: 27, trend: 'up' },
-            { institution: 'Colegio Téc. Profesional Achiga', course: 'D', level: '1° Medio', students: 31, avg: 74, satisfactory: 65, unsatisfactory: 35, trend: 'up' },
-            { institution: 'Liceo Técnico Clelia Clavel Dinator', course: 'E', level: '2° Medio', students: 39, avg: 83, satisfactory: 76, unsatisfactory: 24, trend: 'up' }
+            { institution: 'Liceo Comercial Gabriel González V', course: 'F', level: '2° Medio', students: 37, avg: 78, satisfactory: 70, unsatisfactory: 30, trend: 'up' },
+            { institution: 'Inst. Sup. de Comercio Alberto Blest G', course: 'G', level: '1° Medio', students: 33, avg: 69, satisfactory: 58, unsatisfactory: 42, trend: 'neutral' },
+            { institution: 'Liceo Téc. Bicentenario Felisa Tolup', course: 'H', level: '2° Medio', students: 35, avg: 81, satisfactory: 73, unsatisfactory: 27, trend: 'up' }
         ];
         
         sampleData.forEach(item => {
@@ -456,9 +454,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (coursesComparisonChart) {
             if (grade === '1medio') {
                 coursesComparisonChart.data.datasets[0].data = firstGradeData.performance;
-                coursesComparisonChart.data.datasets[1].data = Array(5).fill(0);
+                coursesComparisonChart.data.datasets[1].data = Array(8).fill(0);
             } else if (grade === '2medio') {
-                coursesComparisonChart.data.datasets[0].data = Array(5).fill(0);
+                coursesComparisonChart.data.datasets[0].data = Array(8).fill(0);
                 coursesComparisonChart.data.datasets[1].data = secondGradeData.performance;
             } else {
                 coursesComparisonChart.data.datasets[0].data = firstGradeData.performance;
