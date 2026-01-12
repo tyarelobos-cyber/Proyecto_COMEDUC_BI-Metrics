@@ -34,21 +34,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Datos de ejemplo para gráficos
-    const courses = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const courses = ['A', 'B', 'C', 'D', 'E'];
     const institutions = ['Institución A', 'Institución B', 'Institución C', 'Institución D', 'Institución E'];
     const competences = ['Comprensión Lectora', 'Producción Escrita', 'Comunicación Oral', 'Vocabulario', 'Gramática y Ortografía'];
     
     // Datos de ejemplo para 1° Medio
     const firstGradeData = {
         courses: courses,
-        performance: [78, 82, 75, 85, 79, 81, 76, 83],
+        performance: [78, 82, 75, 85, 79],
         competences: [82, 75, 79, 85, 80]
     };
     
     // Datos de ejemplo para 2° Medio
     const secondGradeData = {
         courses: courses,
-        performance: [81, 85, 78, 88, 82, 84, 79, 86],
+        performance: [81, 85, 78, 88, 82],
         competences: [85, 78, 82, 88, 83]
     };
     
@@ -236,9 +236,11 @@ document.addEventListener('DOMContentLoaded', function() {
             { institution: 'Institución B', course: 'C', level: '2° Medio', students: 38, avg: 85, satisfactory: 78, unsatisfactory: 22, trend: 'up' },
             { institution: 'Institución B', course: 'D', level: '2° Medio', students: 36, avg: 88, satisfactory: 82, unsatisfactory: 18, trend: 'up' },
             { institution: 'Institución C', course: 'E', level: '1° Medio', students: 34, avg: 79, satisfactory: 70, unsatisfactory: 30, trend: 'down' },
-            { institution: 'Institución C', course: 'F', level: '2° Medio', students: 37, avg: 84, satisfactory: 77, unsatisfactory: 23, trend: 'up' },
-            { institution: 'Institución D', course: 'G', level: '1° Medio', students: 33, avg: 76, satisfactory: 65, unsatisfactory: 35, trend: 'neutral' },
-            { institution: 'Institución D', course: 'H', level: '2° Medio', students: 35, avg: 86, satisfactory: 80, unsatisfactory: 20, trend: 'up' }
+            { institution: 'Institución C', course: 'A', level: '2° Medio', students: 37, avg: 84, satisfactory: 77, unsatisfactory: 23, trend: 'up' },
+            { institution: 'Institución D', course: 'B', level: '1° Medio', students: 33, avg: 76, satisfactory: 65, unsatisfactory: 35, trend: 'neutral' },
+            { institution: 'Institución D', course: 'C', level: '2° Medio', students: 35, avg: 86, satisfactory: 80, unsatisfactory: 20, trend: 'up' },
+            { institution: 'Institución E', course: 'D', level: '1° Medio', students: 31, avg: 80, satisfactory: 72, unsatisfactory: 28, trend: 'up' },
+            { institution: 'Institución E', course: 'E', level: '2° Medio', students: 39, avg: 87, satisfactory: 81, unsatisfactory: 19, trend: 'up' }
         ];
         
         sampleData.forEach(item => {
@@ -409,9 +411,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (coursesComparisonChart) {
             if (grade === '1medio') {
                 coursesComparisonChart.data.datasets[0].data = firstGradeData.performance;
-                coursesComparisonChart.data.datasets[1].data = Array(8).fill(0); // Ocultar 2° medio
+                coursesComparisonChart.data.datasets[1].data = Array(5).fill(0); // Ocultar 2° medio
             } else if (grade === '2medio') {
-                coursesComparisonChart.data.datasets[0].data = Array(8).fill(0); // Ocultar 1° medio
+                coursesComparisonChart.data.datasets[0].data = Array(5).fill(0); // Ocultar 1° medio
                 coursesComparisonChart.data.datasets[1].data = secondGradeData.performance;
             } else {
                 coursesComparisonChart.data.datasets[0].data = firstGradeData.performance;

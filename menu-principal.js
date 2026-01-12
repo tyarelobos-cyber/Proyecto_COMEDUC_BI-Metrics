@@ -41,6 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Si no es el menú principal, DIA Matemáticas ni Desglose Detallado, prevenir acción por ahora
             if (!this.getAttribute('href').includes('menu-principal') && !this.getAttribute('href').includes('dia-matematicas') && !this.getAttribute('href').includes('dia-desglose')) {
                 e.preventDefault();
+                
+                // Verificar si es el botón de Cargar Excel
+                if (this.textContent.includes('Cargar Excel')) {
+                    window.location.href = 'cargar-excel.html';
+                    return;
+                }
+                
                 alert('Esta funcionalidad se implementará en archivos separados próximamente');
                 
                 // Remover clase active de todos

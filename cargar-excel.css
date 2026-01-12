@@ -1,0 +1,153 @@
+/* cargar-excel.css - Estilos específicos para la página de carga de Excel */
+
+/* Área de upload */
+.upload-area {
+    border: 2px dashed #DEE2E6;
+    border-radius: 8px;
+    padding: 60px 30px;
+    text-align: center;
+    margin: 20px 30px;
+    background-color: #F8F9FA;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: #00447A;
+    background-color: #F2F3F5;
+}
+
+.upload-area.dragover {
+    border-color: #83B81A;
+    background-color: #E8F5E9;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: #00447A;
+    margin-bottom: 20px;
+}
+
+.upload-area h3 {
+    color: #00447A;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.upload-subtitle {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.browse-btn {
+    padding: 12px 24px;
+    background-color: #00447A;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+.browse-btn:hover {
+    background-color: #0066CC;
+    transform: translateY(-2px);
+}
+
+.file-info {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Acciones de upload */
+.upload-actions {
+    display: flex;
+    gap: 15px;
+    padding: 0 30px 25px;
+    justify-content: center;
+}
+
+.upload-actions button {
+    min-width: 150px;
+}
+
+/* Estados y badges */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-badge.completado {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+}
+
+.status-badge.pendiente {
+    background-color: #FFF3E0;
+    color: #EF6C00;
+}
+
+.status-badge.error {
+    background-color: #FFEBEE;
+    color: #C62828;
+}
+
+.badge {
+    padding: 4px 10px;
+    background-color: #E3F2FD;
+    color: #1565C0;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Previsualización */
+#previewTable {
+    font-size: 0.85rem;
+}
+
+#previewTable th {
+    background-color: #F8F9FA;
+    font-weight: 600;
+    color: #00447A;
+}
+
+.upload-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .upload-area {
+        margin: 20px 15px;
+        padding: 40px 20px;
+    }
+    
+    .upload-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .upload-actions button {
+        width: 100%;
+    }
+    
+    .table-actions {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar Excel - COMEDUC Dashboard</title>
+    <link rel="stylesheet" href="dia-lenguaje.css">
+    <link rel="stylesheet" href="dia-dia-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar COMEDUC -->
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <h1>COMEDUC</h1>
+            </div>
+            
+            <div class="user-info">
+                <p><i class="fas fa-user-circle"></i> <span id="userName">Usuario COMEDUC</span></p>
+                <p><i class="fas fa-envelope"></i> <span id="userEmail">usuario@comeduc.cl</span></p>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="menu-principal.html" class="nav-item">
+                    <i class="fas fa-home"></i> Menú Principal
+                </a>
+                <a href="dia-overview.html" class="nav-item">
+                    <i class="fas fa-chart-pie"></i> Vista General DIA
+                </a>
+                <a href="dia-matematicas.html" class="nav-item">
+                    <i class="fas fa-calculator"></i> DIA Matemáticas
+                </a>
+                <a href="dia-lenguaje.html" class="nav-item">
+                    <i class="fas fa-book"></i> DIA Lenguaje
+                </a>
+                <a href="dia-desglose.html" class="nav-item">
+                    <i class="fas fa-search"></i> Desglose Detallado
+                </a>
+                <a href="cargar-excel.html" class="nav-item active">
+                    <i class="fas fa-file-upload"></i> Cargar Excel
+                </a>
+            </div>
+            
+            <div class="logout-section">
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="header-left">
+                    <h2><i class="fas fa-file-upload"></i> Cargar Archivos Excel</h2>
+                    <p class="subtitle">Importar datos de evaluaciones DIA a la base de datos</p>
+                </div>
+                <div class="header-right">
+                    <div class="date-info">
+                        <i class="far fa-calendar"></i>
+                        <span id="currentDate">Cargando fecha...</span>
+                    </div>
+                    <div class="kpi-badge">
+                        <i class="fas fa-database"></i>
+                        <span>Base de Datos</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <!-- Panel de Carga de Archivos -->
+                <div class="filters-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-file-excel"></i> Cargar Archivo Excel</h3>
+                        <p class="panel-subtitle">Seleccione y suba archivos Excel con datos de evaluaciones DIA</p>
+                    </div>
+                    
+                    <div class="filters-grid">
+                        <div class="filter-row">
+                            <div class="filter-group full-width">
+                                <label for="tipoDatos"><i class="fas fa-graduation-cap"></i> Tipo de Datos</label>
+                                <select id="tipoDatos" class="filter-select">
+                                    <option value="">Seleccione tipo de datos...</option>
+                                    <option value="matematicas">Datos Matemáticas</option>
+                                    <option value="lenguaje">Datos Lenguaje</option>
+                                    <option value="estudiantes">Datos Estudiantes</option>
+                                    <option value="instituciones">Datos Instituciones</option>
+                                    <option value="evaluaciones">Resultados Evaluaciones</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-row">
+                            <div class="filter-group">
+                                <label for="anoDatos"><i class="fas fa-calendar"></i> Año</label>
+                                <select id="anoDatos" class="filter-select">
+                                    <option value="2025">2025</option>
+                                    <option value="2024" selected>2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="semestreDatos"><i class="fas fa-calendar-alt"></i> Semestre</label>
+                                <select id="semestreDatos" class="filter-select">
+                                    <option value="1">Primer Semestre</option>
+                                    <option value="2" selected>Segundo Semestre</option>
+                                    <option value="anual">Anual</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="nivelDatos"><i class="fas fa-users"></i> Nivel</label>
+                                <select id="nivelDatos" class="filter-select">
+                                    <option value="all">Todos los niveles</option>
+                                    <option value="1medio">1° Medio</option>
+                                    <option value="2medio">2° Medio</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Zona de Arrastrar y Soltar -->
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                        <h3>Arrastra y suelta tu archivo Excel aquí</h3>
+                        <p class="upload-subtitle">o haz clic para seleccionar archivo</p>
+                        <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" hidden>
+                        <button class="browse-btn" id="browseBtn">
+                            <i class="fas fa-folder-open"></i> Buscar Archivo
+                        </button>
+                        <p class="file-info" id="fileInfo">Formato soportado: .xlsx, .xls, .csv (Max. 10MB)</p>
+                    </div>
+                    
+                    <div class="upload-actions">
+                        <button class="apply-filter-btn" id="processFile" disabled>
+                            <i class="fas fa-cogs"></i> Procesar Archivo
+                        </button>
+                        <button class="reset-filter-btn" id="clearFile">
+                            <i class="fas fa-times"></i> Limpiar
+                        </button>
+                        <button class="export-filter-btn" id="uploadToDB" disabled>
+                            <i class="fas fa-database"></i> Subir a Base de Datos
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Vista Previa de Datos -->
+                <div class="details-section">
+                    <div class="section-header">
+                        <h4><i class="fas fa-eye"></i> Vista Previa de Datos</h4>
+                        <div class="table-actions">
+                            <button class="action-btn" id="validateData">
+                                <i class="fas fa-check-circle"></i> Validar Datos
+                            </button>
+                            <button class="action-btn" id="downloadTemplate">
+                                <i class="fas fa-download"></i> Descargar Plantilla
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="results-table" id="previewTable">
+                            <thead>
+                                <tr id="previewHeaders">
+                                    <!-- Encabezados cargados dinámicamente -->
+                                </tr>
+                            </thead>
+                            <tbody id="previewBody">
+                                <!-- Datos cargados dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-footer">
+                        <div class="upload-stats" id="uploadStats">
+                            <p><i class="fas fa-info-circle"></i> Seleccione un archivo Excel para previsualizar los datos.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Historial de Cargas -->
+                <div class="dia-section">
+                    <div class="dia-header">
+                        <h3><i class="fas fa-history"></i> Historial de Cargas</h3>
+                    </div>
+                    <div class="dia-content">
+                        <div class="table-container">
+                            <table class="results-table" id="historyTable">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Archivo</th>
+                                        <th>Tipo</th>
+                                        <th>Registros</th>
+                                        <th>Estado</th>
+                                        <th>Usuario</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="historyBody">
+                                    <!-- Historial cargado dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Biblioteca para leer Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="common.js"></script>
+    <script src="cargar-excel.js"></script>
+</body>
+</html>
