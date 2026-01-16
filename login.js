@@ -18,14 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Validar correos permitidos
     function isValidEmail(email) {
-        // Correos @comeduc.cl o el correo especial
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@(comeduc\.cl|insucoabg\.cl)$/;
+        // Correos @comeduc.cl
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@comeduc\.cl$/;
         return emailRegex.test(email);
     }
     
-    // Validar correo específico @comeduc.cl o el correo especial
+    // Validar correo específico @comeduc.cl
     function isAllowedEmail(email) {
-        return email.endsWith('@comeduc.cl') || email === 'tyarelobos@insucoabg.cl';
+        return email.endsWith('@comeduc.cl');
     }
     
     // Validar contraseña
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Validar formato de correo
         if (!isValidEmail(email)) {
-            showError('Formato de correo inválido. Use correo @comeduc.cl o tyarelobos@insucoabg.cl');
+            showError('Formato de correo inválido. Use correo @comeduc.cl');
             emailInput.focus();
             return;
         }
